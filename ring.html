@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIJOY & SONA | Elite Gents Ring Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Luxury Royal Palette & Space Archetype --- */
+        :root {
+            --bg-base: #05070B; /* Midnight Obsidian */
+            --bg-card: rgba(13, 19, 33, 0.75);
+            --gold-regal: #E5C158; /* Pure Vibrant Gold */
+            --gold-glow: rgba(229, 193, 88, 0.2);
+            --text-white: #FFFFFF;
+            --text-subtle: #C4C8D5;
+            --font-cursive: 'Great Vibes', cursive;
+            --font-clean: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-white);
+            font-family: var(--font-clean);
+            overflow-x: hidden;
+            /* Decent & Variant Deep Background Shades */
+            background-image: 
+                radial-gradient(circle at 85% 15%, rgba(139, 0, 0, 0.15) 0%, transparent 55%), /* Deep Ruby Tint */
+                radial-gradient(circle at 15% 80%, rgba(0, 100, 80, 0.14) 0%, transparent 55%); /* Velvet Emerald Tint */
+            min-height: 100vh;
+        }
+
+        /* --- Custom Premium Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-regal); }
+
+        /* --- Header Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 7, 11, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(229, 193, 88, 0.1);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-cursive);
+            font-size: 3rem;
+            color: var(--gold-regal);
+            text-decoration: none;
+            text-shadow: 0 0 15px var(--gold-glow);
+            font-weight: 400;
+        }
+
+        /* --- MM.html Luxury Link Button Styling --- */
+        .btn-nav-link {
+            display: inline-block;
+            font-family: var(--font-clean);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-regal);
+            background: transparent;
+            padding: 0.7rem 1.4rem;
+            border: 1px solid rgba(229, 193, 88, 0.4);
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-nav-link:hover {
+            color: var(--bg-base);
+            background: var(--gold-regal);
+            border-color: var(--gold-regal);
+            box-shadow: 0 0 15px var(--gold-glow);
+            transform: translateY(-1px);
+        }
+
+        /* --- Page State Management --- */
+        .view-state {
+            transition: opacity 0.4s ease;
+            padding-top: 9rem;
+        }
+
+        .hidden {
+            display: none !important;
+            opacity: 0;
+        }
+
+        /* --- Main Page Showroom --- */
+        .showroom-title {
+            text-align: center;
+            margin-bottom: 4.5rem;
+            padding: 0 1rem;
+        }
+
+        .showroom-title h1 {
+            font-family: var(--font-cursive);
+            font-size: 5rem;
+            color: var(--gold-regal);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .showroom-title p {
+            font-size: 0.8rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+        }
+
+        .showroom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Optimized to 280px for mobile viewports */
+            gap: 3.5rem;
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 0 5% 8rem 5%;
+        }
+
+        /* --- Luxury Ring Cards --- */
+        .ring-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(229, 193, 88, 0.12);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ring-card::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(229, 193, 88, 0.03);
+            pointer-events: none;
+        }
+
+        .ring-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold-regal);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(229, 193, 88, 0.15);
+        }
+
+        .img-vault {
+            width: 100%;
+            height: 330px;
+            background: #090d16;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 1px solid rgba(229, 193, 88, 0.05);
+        }
+
+        .img-vault img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ring-card:hover .img-vault img {
+            transform: scale(1.07);
+        }
+
+        .piece-headline {
+            font-family: var(--font-cursive);
+            font-size: 3rem;
+            color: var(--gold-regal);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .piece-details {
+            font-size: 0.9rem;
+            color: var(--text-subtle);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* --- Action Buttons --- */
+        .btn-action {
+            display: inline-block;
+            width: 100%;
+            font-family: var(--font-clean);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bg-base);
+            background: var(--gold-regal);
+            padding: 1.1rem;
+            border: 1px solid var(--gold-regal);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(229, 193, 88, 0.15);
+        }
+
+        .btn-action:hover {
+            background: transparent;
+            color: var(--gold-regal);
+            box-shadow: 0 6px 25px rgba(229, 193, 88, 0.3);
+        }
+
+        /* --- Detail Form Portal View --- */
+        .form-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5% 8rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .preview-box {
+            border: 1px solid var(--gold-regal);
+            padding: 1rem;
+            background: var(--bg-card);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .preview-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .form-wrapper h2 {
+            font-family: var(--font-cursive);
+            font-size: 4.5rem;
+            color: var(--gold-regal);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .form-wrapper p {
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .field-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            color: var(--gold-regal);
+        }
+
+        .field-group input, .field-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(229, 193, 88, 0.18);
+            padding: 1rem;
+            color: #fff;
+            font-family: var(--font-clean);
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .field-group input:focus, .field-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-regal);
+        }
+
+        .return-link {
+            background: transparent;
+            border: none;
+            color: var(--text-subtle);
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .return-link:hover {
+            color: var(--gold-regal);
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid rgba(229, 193, 88, 0.1);
+            padding: 4rem 5% 2rem 5%;
+            text-align: center;
+            background: #030407;
+        }
+
+        .footer-logo {
+            font-family: var(--font-cursive);
+            font-size: 3.5rem;
+            color: var(--gold-regal);
+            margin-bottom: 0.8rem;
+        }
+
+        /* --- Global Media Queries for Mobile Responsiveness --- */
+        @media (max-width: 850px) {
+            .form-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .showroom-title h1 { font-size: 3.5rem; }
+            .form-wrapper h2 { font-size: 3.5rem; }
+            header { padding: 1rem 5%; }
+            .logo { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .showroom-title h1 { font-size: 2.8rem; }
+            .form-wrapper h2 { font-size: 2.8rem; }
+            .logo { font-size: 1.8rem; }
+            .btn-nav-link { padding: 0.5rem 1rem; font-size: 0.65rem; }
+            .view-state { padding-top: 7.5rem; }
+            .ring-card { padding: 1.5rem; }
+            .img-vault { height: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo" onclick="revertToGallery()">BIJOY & SONA Jewlers</a>
+        <a href="MM.html" class="btn-nav-link">← Main Collection</a>
+    </header>
+
+    <main id="gallerySection" class="view-state">
+        <div class="showroom-title">
+            <h1>The Gentleman's Sovereign</h1>
+            <p>Mastercrafted Signets & Solitaires</p>
+        </div>
+
+        <div class="showroom-grid">
+            <div class="ring-card">
+                <div class="img-vault">
+                    <img src="J6.jpg" alt="Classic Green Gemstone Ring">
+                </div>
+                <h3 class="piece-headline">Classic Emerald Sovereign</h3>
+                <p class="piece-details">An ornate golden masterpiece centered with a brilliant green gemstone framed by high-grade micro-pave contours.</p>
+                <button class="btn-action" onclick="routeToForm('Classic Emerald Sovereign', 'J6.jpg', 'An ornate golden masterpiece centered with a brilliant green gemstone framed by high-grade micro-pave contours.')">Send Request</button>
+            </div>
+
+            <div class="ring-card">
+                <div class="img-vault">
+                    <img src="J10.jpg" alt="Diamond Men's Solitaire">
+                </div>
+                <h3 class="piece-headline">Sterling Silver Solitaire</h3>
+                <p class="piece-details">A bold structural brilliant-cut diamond center stone balanced inside striking dual-tone gold and silver geometry.</p>
+                <button class="btn-action" onclick="routeToForm('Sterling Silver Solitaire', 'J10.jpg', 'A bold structural brilliant-cut diamond center stone balanced inside striking dual-tone gold and silver geometry.')">Send Request</button>
+            </div>
+
+            <div class="ring-card">
+                <div class="img-vault">
+                    <img src="J12.jpg" alt="Sun Signet Ring">
+                </div>
+                <h3 class="piece-headline">The Sunbeam Signet</h3>
+                <p class="piece-details">Featuring detailed sun rising ray engraving work along a sleek, beautifully polished square gold profile.</p>
+                <button class="btn-action" onclick="routeToForm('The Sunbeam Signet', 'J12.jpg', 'Featuring detailed sun rising ray engraving work along a sleek, beautifully polished square gold profile.')">Send Request</button>
+            </div>
+
+            <div class="ring-card">
+                <div class="img-vault">
+                    <img src="J14.jpg" alt="Imperial Emerald Cabochon">
+                </div>
+                <h3 class="piece-headline">Imperial Emerald Box</h3>
+                <p class="piece-details">A luxury cushion-cut statement natural emerald gemstone nestled beautifully inside structural baguette borders.</p>
+                <button class="btn-action" onclick="routeToForm('Imperial Emerald Box', 'J14.jpg', 'A luxury cushion-cut statement natural emerald gemstone nestled beautifully inside structural baguette borders.')">Send Request</button>
+            </div>
+
+            <div class="ring-card">
+                <div class="img-vault">
+                    <img src="J15.jpg" alt="Genuine Gold Diamond Ring">
+                </div>
+                <h3 class="piece-headline">The Minimalist Prestige</h3>
+                <p class="piece-details">Simple, elegant 18k yellow gold heavy band set beautifully with a central block cluster of genuine clear diamonds.</p>
+                <button class="btn-action" onclick="routeToForm('The Minimalist Prestige', 'J15.jpg', 'Simple, elegant 18k yellow gold heavy band set beautifully with a central block cluster of genuine clear diamonds.')">Send Request</button>
+            </div>
+
+            <div class="ring-card">
+                <div class="img-vault">
+                    <img src="J17.jpg" alt="Red Sapphire Ring">
+                </div>
+                <h3 class="piece-headline">Crimson Sapphire Sovereign</h3>
+                <p class="piece-details">A brilliant deep cabochon red sapphire stone fixed along an incredibly polished premium satin-finish luxury gold mount.</p>
+                <button class="btn-action" onclick="routeToForm('Crimson Sapphire Sovereign', 'J17.jpg', 'A brilliant deep cabochon red sapphire stone fixed along an incredibly polished premium satin-finish luxury gold mount.')">Send Request</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="requestPortalSection" class="view-state hidden">
+        <div class="form-layout">
+            <div>
+                <button class="return-link" onclick="revertToGallery()">← Return to Collection</button>
+                <div class="preview-box">
+                    <img id="formProductImg" src="" alt="Selected Masterpiece Piece">
+                </div>
+            </div>
+            
+            <div class="form-wrapper">
+                <h2>Private Order Suite</h2>
+                <p>Provide your preference details below to send an immediate acquisition dispatch request packet to our executive consultants.</p>
+                
+                <form id="acquisitionForm" onsubmit="broadcastLaptopNotification(event)">
+                    <div class="field-group">
+                        <label>Target Artifact Asset Name</label>
+                        <input type="text" id="formProductName" readonly style="border-color: var(--gold-regal); color: var(--gold-regal); font-weight: 500;">
+                    </div>
+                    <div class="field-group">
+                        <label>Your Name / Title</label>
+                        <input type="text" required placeholder="Sir Arthur Pendragon">
+                    </div>
+                    <div class="field-group">
+                        <label>Communication Secure Line (Phone/Email)</label>
+                        <input type="text" required placeholder="client@maison.com">
+                    </div>
+                    <div class="field-group">
+                        <label>Sizing & Custom Specifications</label>
+                        <textarea id="formProductDesc" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-action">Authorize Acquisition Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">BIJOY & SONA</div>
+        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.25); letter-spacing: 2px; text-transform: uppercase;">&copy; 2026 BIJOY & SONA Vault. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Request Notification Engine Permissions from Browser Ecosystem immediately upon boot
+        document.addEventListener('DOMContentLoaded', () => {
+            if ("Notification" in window) {
+                Notification.requestPermission();
+            }
+        });
+
+        // Navigation Controller Vectors
+        function routeToForm(name, imgSrc, description) {
+            // Automatically push metrics into Form fields
+            document.getElementById('formProductName').value = name;
+            document.getElementById('formProductImg').src = imgSrc;
+            document.getElementById('formProductDesc').value = "Inquiries on: " + description;
+
+            // View switch hand-off
+            document.getElementById('gallerySection').classList.add('hidden');
+            document.getElementById('requestPortalSection').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function revertToGallery() {
+            document.getElementById('requestPortalSection').classList.add('hidden');
+            document.getElementById('gallerySection').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // Desktop OS Notification Broadcast Engine
+        function broadcastLaptopNotification(event) {
+            event.preventDefault(); // Halt normal form post updates
+            
+            const targetItem = document.getElementById('formProductName').value;
+            const targetImg = document.getElementById('formProductImg').src;
+
+            if (!("Notification" in window)) {
+                alert("Acquisition request transmitted directly to the salon terminal! Note: Desktop UI popups are disabled.");
+                return;
+            }
+
+            if (Notification.permission === "granted") {
+                // Sends high priority system notification popup alert directly onto your laptop interface!
+                new Notification("💍 Premium Client Request!", {
+                    body: `A user is requesting private acquisition details for: "${targetItem}"`,
+                    icon: targetImg
+                });
+                
+                alert(`✨ Luxury Request submitted successfully for ${targetItem}! Your laptop terminal has broadcasted an alert notice.`);
+                revertToGallery();
+            } else {
+                // Permissions Fallback
+                alert(`✨ Request submitted for ${targetItem}! Please toggle notification flags in your system settings tray.`);
+                Notification.requestPermission();
+                revertToGallery();
+            }
+        }
+    </script>
+</body>
+</html>

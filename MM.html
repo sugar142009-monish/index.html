@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIJOY & SONA | High Luxury Jewelry Maison</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Premium Palette & Design Tokens --- */
+        :root {
+            --bg-deep: #0B0E14; /* Deep Obsidian Base */
+            --bg-glass: rgba(18, 24, 38, 0.65);
+            --gold-royal: #E5C158; /* Pure Liquid Gold Accent */
+            --gold-glow: rgba(229, 193, 88, 0.2);
+            --text-pure: #FFFFFF;
+            --text-soft: #C3C7DB;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            
+            /* Login Portal Specific Tokens */
+            --midnight-onyx: #0a0a0a;
+            --charcoal-panel: #141414;
+            --imperial-gold: #cfa86b;
+            --gold-gradient: linear-gradient(135deg, #a68042 0%, #dbba83 50%, #b89355 100%);
+            --text-light: #e6e6e6;
+            --text-muted: #8c8c8c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-pure);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(141, 14, 46, 0.15) 0%, transparent 50%), 
+                radial-gradient(circle at 15% 75%, rgba(11, 71, 56, 0.15) 0%, transparent 50%);
+        }
+
+        /* --- Scroll Environment --- */
+        html {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-royal);
+        }
+
+        /* --- Royal Header Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 14, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 193, 88, 0.1);
+            padding: 1.8rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold-royal);
+            text-decoration: none;
+            text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        nav a {
+            color: var(--text-pure);
+            text-decoration: none;
+            margin-left: 3rem;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--gold-royal);
+            text-shadow: 0 0 8px var(--gold-glow);
+        }
+
+        /* --- Hero Section (First Look Impact) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 1.5rem;
+        }
+
+        .hero-box {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: royalFadeIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            max-width: 1000px;
+        }
+
+        .hero-crest {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--gold-royal);
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-headline {
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: 2px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-headline span {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-soft);
+            letter-spacing: 12px;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        .btn-royal {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bg-deep);
+            background: var(--gold-royal);
+            padding: 1.25rem 3.5rem;
+            border: 1px solid var(--gold-royal);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 20px rgba(229, 193, 88, 0.25);
+        }
+
+        .btn-royal:hover {
+            background: transparent;
+            color: var(--gold-royal);
+            box-shadow: 0 8px 30px rgba(229, 193, 88, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* --- Gallery Section --- */
+        .showroom {
+            padding: 10rem 5%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .showroom-title {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .showroom-title h2 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .showroom-title p {
+            color: var(--gold-royal);
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .showroom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+        }
+
+        /* --- Luxury Artifact Cards --- */
+        .artifact-card {
+            background: var(--bg-glass);
+            border: 1px solid rgba(229, 193, 88, 0.12);
+            backdrop-filter: blur(8px);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .artifact-card::before {
+            content: '';
+            position: absolute;
+            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px solid rgba(229, 193, 88, 0.04);
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .artifact-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold-royal);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(229, 193, 88, 0.15);
+        }
+
+        .artifact-card:hover::before {
+            border-color: rgba(229, 193, 88, 0.2);
+        }
+
+        .visual-stage {
+            width: 100%;
+            height: 340px;
+            background: #0d121f;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(229, 193, 88, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-stage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .artifact-card:hover .visual-stage img {
+            transform: scale(1.08);
+        }
+
+        .category-lbl {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold-royal);
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .piece-name {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .piece-desc {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .interactive-link {
+            background: transparent;
+            border: none;
+            color: var(--text-pure);
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--gold-royal);
+            transition: all 0.3s ease;
+        }
+
+        .interactive-link:hover {
+            color: var(--gold-royal);
+            letter-spacing: 5px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid rgba(229, 193, 88, 0.1);
+            padding: 5rem 5% 3rem 5%;
+            text-align: center;
+            background: #06080d;
+        }
+
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--gold-royal);
+            letter-spacing: 5px;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-creed {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .footer-meta {
+            font-size: 0.75rem;
+            color: rgba(195, 199, 219, 0.3);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- High Luxury Modal Overlay Engine --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 5000;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 460px;
+            background: var(--charcoal-panel);
+            padding: 50px 45px;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(207, 168, 107, 0.03);
+            border: 1px solid rgba(207, 168, 107, 0.15);
+            text-align: center;
+            transform: translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .login-card {
+            transform: translateY(0);
+        }
+
+        .close-portal {
+            position: absolute;
+            top: 20px; right: 25px;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-portal:hover { color: var(--imperial-gold); }
+
+        .brand-crest { font-size: 1.8rem; color: var(--imperial-gold); margin-bottom: 12px; letter-spacing: 4px; }
+        .brand-name { font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 500; letter-spacing: 4px; color: #f2e3cb; text-transform: uppercase; margin-bottom: 5px; }
+        .brand-subtitle { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 5px; color: var(--imperial-gold); text-transform: uppercase; margin-bottom: 30px; opacity: 0.8; }
+        .portal-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--text-light); margin-bottom: 30px; letter-spacing: 1px; font-style: italic; }
+        
+        .input-group { position: relative; margin-bottom: 25px; text-align: left; }
+        .input-group label { display: block; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 2px; color: var(--imperial-gold); text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
+        .input-field { width: 100%; background: rgba(10, 10, 10, 0.4); border: 1px solid rgba(207, 168, 107, 0.15); padding: 15px 18px; font-family: var(--font-serif); font-size: 1.05rem; color: var(--text-light); outline: none; border-radius: 2px; transition: all 0.4s ease; }
+        .input-field:focus { border-color: var(--imperial-gold); background: rgba(207, 168, 107, 0.02); box-shadow: 0 0 15px rgba(207, 168, 107, 0.08); }
+        
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
+        .remember-me { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-muted); font-weight: 300; }
+        .remember-me input { accent-color: var(--imperial-gold); cursor: pointer; }
+        .forgot-link { color: var(--imperial-gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 1px; transition: opacity 0.3s; }
+        .forgot-link:hover { opacity: 0.7; }
+        
+        .btn-vault-enter { width: 100%; padding: 18px; background: var(--midnight-onyx); color: var(--imperial-gold); border: 1px solid var(--imperial-gold); font-family: 'Cinzel', serif; letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 2px; transition: all 0.4s ease; }
+        .btn-vault-enter:hover { color: var(--midnight-onyx); border-color: transparent; background: var(--gold-gradient); box-shadow: 0 12px 30px rgba(207, 168, 107, 0.35); transform: translateY(-2px); }
+        
+        .vault-footer { margin-top: 35px; border-top: 1px solid rgba(207, 168, 107, 0.1); padding-top: 20px; }
+        .vault-footer p { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; margin-bottom: 8px; }
+        .request-access { font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--imperial-gold); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: opacity 0.3s; }
+        .request-access:hover { opacity: 0.7; }
+
+        @keyframes royalFadeIn { to { opacity: 1; transform: translateY(0); } }
+        
+        /* --- Clean Mobile Viewport Enhancements --- */
+        @media (max-width: 768px) { 
+            header {
+                padding: 1.2rem 4%;
+            }
+            .brand-logo {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+            }
+            .hero-headline { 
+                font-size: 2.8rem; 
+            } 
+            .hero-headline span { 
+                font-size: 0.85rem; 
+                letter-spacing: 6px; 
+            }
+            .showroom {
+                padding: 5rem 4%;
+            }
+            .showroom-title {
+                margin-bottom: 3rem;
+            }
+            .showroom-title h2 {
+                font-size: 2.2rem;
+            }
+            .login-card {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-logo">BIJOY & SONA</a>
+        <nav>
+            <a href="ring.html">Maison</a>
+            <a href="neck.html">Vault</a>
+            <a href="Enquiry Suite.html">Enquiry</a>
+            <a href="#" id="auth-link">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-box">
+            <p class="hero-crest">The Golden Heritage</p>
+            <h1 class="hero-headline">
+                TIMELESS COUTURE
+                <span>Unrivaled Aesthetic Masterpieces</span>
+            </h1>
+            <a href="#collection" class="btn-royal">Enter The Vault</a>
+        </div>
+    </section>
+
+    <section class="showroom" id="collection">
+        <div class="showroom-title">
+            <h2>The Signature Legacy</h2>
+            <p>Curated Rarities</p>
+        </div>
+
+        <div class="showroom-grid">
+            <div class="artifact-card">
+                <div class="visual-stage">
+                    <img src="J20.jpg" alt="Sapphire 21ct Necklace">
+                </div>
+                <span class="category-lbl">Necklace Collection</span>
+                <h3 class="piece-name">The Sapphire Imperial</h3>
+                <p class="piece-desc">A breathtaking 21-carat deep ocean blue sapphire cascade, bordered beautifully with brilliant gold settings.</p>
+                <button class="interactive-link">Request Private View</button>
+            </div>
+
+            <div class="artifact-card">
+                <div class="visual-stage">
+                    <img src="J22.jpg" alt="Vintage Mid Century Weiss Set">
+                </div>
+                <span class="category-lbl">Heritage Suites</span>
+                <h3 class="piece-name">Aurora Borealis Demi</h3>
+                <p class="piece-desc">A stunning vintage mid-century masterpiece showcasing iridescent hues that shimmer at every angle.</p>
+                <button class="interactive-link">Request Private View</button>
+            </div>
+
+            <div class="artifact-card">
+                <div class="visual-stage">
+                    <img src="J5.jpg" alt="Magnificent Pink Diamond Pendant">
+                </div>
+                <span class="category-lbl">High Jewelry Vault</span>
+                <h3 class="piece-name">The Empress Rose</h3>
+                <p class="piece-desc">A magnificent statement drop-cut pink diamond centerpiece, crowned inside flawless pave-set links.</p>
+                <button class="interactive-link">Request Private View</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">BIJOY & SONA</div>
+        <p class="footer-creed">Where elite legacy aligns with impeccable design to capture absolute fascination from the very first glance.</p>
+        <p class="footer-meta">&copy; 2026 BIJOY & SONA High Jewelry. All Rights Reserved.</p>
+    </footer>
+
+    <div class="modal-overlay" id="portalOverlay">
+        <div class="login-card">
+            <span class="close-portal" id="closePortal">&times;</span>
+            <div class="brand-crest">⚜️</div>
+            <h1 class="brand-name">Bijoy & Sona</h1>
+            <p class="brand-subtitle">Fine Jewellery</p>
+            <p class="portal-title">Enter Private Client Vault</p>
+
+            <form id="royalLoginForm" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="clientUid">Client Identifier</label>
+                    <input type="text" id="clientUid" class="input-field" placeholder="Enter Private ID or Email" required autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="clientKey">Passkey / Signature</label>
+                    <input type="password" id="clientKey" class="input-field" placeholder="••••••••••••" required>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberDevice"> Secure Remember
+                    </label>
+                    <a href="#" class="forgot-link" onclick="alert('Concierge Note: Please contact the Atelier desk directly at +91 98282 38550 to re-verify your private credentials.')">Lost Credentials?</a>
+                </div>
+
+                <button type="submit" class="btn-vault-enter" id="loginBtn">Authenticate Secure Entry</button>
+            </form>
+
+            <div class="vault-footer">
+                <p>New partner or royal representative?</p>
+                <a href="create account.html" class="request-access">Create Account →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const authLink = document.getElementById("auth-link");
+            const portalOverlay = document.getElementById("portalOverlay");
+            const closePortal = document.getElementById("closePortal");
+
+            function syncAuthLayout() {
+                if (sessionStorage.getItem("isLoggedIn") === "true") {
+                    authLink.textContent = "Logout";
+                } else {
+                    authLink.textContent = "Login";
+                }
+            }
+
+            authLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                if (sessionStorage.getItem("isLoggedIn") === "true") {
+                    sessionStorage.removeItem("isLoggedIn");
+                    syncAuthLayout();
+                    alert("Vault environment connection severed safely.");
+                } else {
+                    portalOverlay.classList.add("active");
+                }
+            });
+
+            closePortal.addEventListener("click", function() {
+                portalOverlay.classList.remove("active");
+            });
+
+            portalOverlay.addEventListener("click", function(e) {
+                if (e.target === portalOverlay) {
+                    portalOverlay.classList.remove("active");
+                }
+            });
+
+            window.handleLogin = function(event) {
+                event.preventDefault();
+                const btn = document.getElementById('loginBtn');
+                btn.innerText = "VERIFYING SIGNATURE...";
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    alert("Welcome back. Interface signature accepted securely.");
+                    sessionStorage.setItem("isLoggedIn", "true");
+                    
+                    btn.innerText = "Authenticate Secure Entry";
+                    btn.disabled = false;
+                    portalOverlay.classList.remove("active");
+                    
+                    syncAuthLayout();
+                    document.getElementById("royalLoginForm").reset();
+                }, 1200);
+            };
+
+            syncAuthLayout();
+        });
+    </script>
+</body>
+</html>

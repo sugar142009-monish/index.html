@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Enquiry | Private Concierge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* The Noir & Gold Premium Palette */
+            --midnight-onyx: #0a0a0a;       /* Dark, soft elegant pure matte black background */
+            --charcoal-panel: #141414;      /* Deep secondary charcoal black for contrast */
+            --imperial-gold: #cfa86b;       /* Muted satin gold, not brassy or too bright */
+            --ivory-silk: #e6c7a7;          /* Crisp luxury off-white form background */
+            --text-dark: #1c1c1c;
+            --text-light: #e6e6e6;
+            --gold-gradient: linear-gradient(135deg, #a68042 0%, #dbba83 50%, #b89355 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--midnight-onyx);
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%);
+            font-family: 'Playfair Display', serif;
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 80px 20px 40px 20px;
+            position: relative;
+        }
+        
+        /* Top Left Elegant Home Button */
+        .home-navigation-header {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            z-index: 1000;
+        }
+
+        .btn-royal-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(20, 20, 20, 0.6);
+            color: var(--imperial-gold);
+            border: 1px solid rgba(207, 168, 107, 0.4);
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 2px;
+            backdrop-filter: blur(8px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-royal-home:hover {
+            color: var(--midnight-onyx);
+            background: var(--gold-gradient);
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(207, 168, 107, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* Cinematic Entrance Container */
+        .enquiry-frame {
+            max-width: 1150px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            background: #fff;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 40px rgba(207, 168, 107, 0.04);
+            min-height: 720px;
+            border: 1px solid rgba(207, 168, 107, 0.25);
+            border-radius: 4px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: royalReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes royalReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Left Side Panel - Imperial Black Identity */
+        .contact-info {
+            background-color: var(--charcoal-panel);
+            padding: 65px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Delicate Gold Border Line separator */
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            bottom: 20%;
+            right: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(207, 168, 107, 0.35), transparent);
+        }
+
+        .contact-info h2 {
+            font-family: 'Cinzel', serif;
+            color: #f2e3cb;
+            font-size: 1.9rem;
+            margin-bottom: 45px;
+            letter-spacing: 3px;
+            line-height: 1.4;
+            font-weight: 500;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .info-item {
+            margin-bottom: 35px;
+        }
+
+        .info-item h4 {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--imperial-gold);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .info-item p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #cccccc;
+            letter-spacing: 0.5px;
+        }
+
+        /* Right Side Panel - Ivory & Onyx Form */
+        .form-container {
+            padding: 65px 60px;
+            background: var(--ivory-silk);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            margin-bottom: 45px;
+            text-align: center;
+            color: var(--midnight-onyx);
+            letter-spacing: 3px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            color: #70757d;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 4px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #d1d5db;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            color: var(--text-dark);
+            border-radius: 0;
+        }
+
+        input:focus, textarea:focus {
+            border-bottom: 1px solid var(--imperial-gold);
+            padding-left: 8px;
+            background: rgba(207, 168, 107, 0.02);
+        }
+
+        /* High Luxury Button Execution */
+        .submit-btn {
+            width: 100%;
+            padding: 22px;
+            background: var(--midnight-onyx);
+            color: var(--imperial-gold);
+            border: 1px solid var(--imperial-gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+        }
+
+        .submit-btn:hover {
+            color: var(--midnight-onyx);
+            border-color: transparent;
+            background: var(--gold-gradient);
+            box-shadow: 0 12px 30px rgba(207, 168, 107, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Bottom Interactive Map Strip */
+        .map-section {
+            grid-column: span 2;
+            padding: 45px;
+            background-color: #c8b692;
+            border-top: 1px solid rgba(207, 168, 107, 0.25);
+            text-align: center;
+        }
+
+        #get-directions {
+            padding: 16px 40px;
+            background: var(--midnight-onyx);
+            color: var(--imperial-gold);
+            border: 1px solid var(--imperial-gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2.5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border-radius: 2px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        #get-directions:hover {
+            background: var(--gold-gradient);
+            color: var(--midnight-onyx);
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(207, 168, 107, 0.3);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            body { padding: 20px 15px 40px 15px; }
+            
+            .home-navigation-header {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                text-align: left;
+                margin-bottom: 25px;
+                z-index: auto;
+            }
+
+            .enquiry-frame { 
+                grid-template-columns: 1fr; 
+                margin: 0 auto;
+                min-height: auto;
+            }
+            
+            .contact-info::after { display: none; }
+            .map-section { grid-column: span 1; padding: 35px 20px; }
+            .form-container { padding: 45px 20px; }
+            .contact-info { padding: 45px 20px; }
+            .contact-info h2 { font-size: 1.6rem; margin-bottom: 35px; }
+            .form-container h3 { font-size: 1.35rem; margin-bottom: 35px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP LEFT GLOBAL NAVIGATION HEADER -->
+    <header class="home-navigation-header">
+        <a href="MM.html" class="btn-royal-home">
+            ⚜️ Go To Home
+        </a>
+    </header>
+
+    <div class="enquiry-frame">
+        <!-- Left Side Panel Layout -->
+        <div class="contact-info">
+            <h2>BIJOY AND SONA Jewellery</h2>
+            <div class="info-item">
+                <h4>Telephone</h4>
+                <p>+91 98282 38550</p>
+            </div>
+            <div class="info-item">
+                <h4>The Atelier Address</h4>
+                <p>64 Shandilya Shadan, Ghati Karolan,<br>JAIPUR GONER ROAD (BPL), RAJASTHAN, India</p>
+            </div>
+            <div class="info-item">
+                <h4>Hours of Operation</h4>
+                <p>By Appointment Only<br>Mon - Sat: 11:00 AM - 7:00 PM</p>
+            </div>
+        </div>
+
+        <!-- Right Side Panel Layout -->
+        <div class="form-container">
+            <h3>Request an Invitation</h3>
+            
+            <form id="royalForm">
+                <!-- Web3Forms API Hidden Parameters -->
+                <input type="hidden" name="access_key" value="1d89d432-7288-43d7-9268-fc00f21cc12e">
+                <input type="hidden" name="subject" value="New Royal Jewellery Enquiry Received">
+                <input type="hidden" name="from_name" value="Atelier Digital Concierge">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="customer_name" placeholder="Your Excellency's Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Electronic Mail</label>
+                    <input type="email" name="customer_email" placeholder="email@luxury.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Interested In</label>
+                    <input type="text" name="jewelry_interest" placeholder="Bespoke Ring, Rare Diamond, etc.">
+                </div>
+                <div class="form-group">
+                    <label>Your Message</label>
+                    <textarea rows="3" name="message" placeholder="Describe your vision..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Send Enquiry</button>
+            </form>
+        </div>
+
+        <!-- Dynamic Maps Interface CTA -->
+        <div class="map-section">
+            <button id="get-directions">
+                📍 GET DIRECTIONS TO THE ATELIER
+            </button>
+            <p style="color: #4a4a4a; font-size: 0.75rem; margin-top: 12px; font-family: 'Cinzel'; letter-spacing: 1px; font-weight: bold;">
+                (Click to navigate securely from your current location)
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // ASYNCHRONOUS FORM SUBMISSION WITH LIVE EMAIL DELIVERY
+        document.getElementById('royalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.innerText;
+            
+            submitBtn.innerText = "TRANSMITTING ENQUIRY...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    alert("Your enquiry has been securely received by our systems. Our premium concierge team will contact you shortly.");
+                    document.getElementById('royalForm').reset();
+                } else {
+                    console.log(response);
+                    alert("System Notice: " + res.message);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert("Form submission failed. Please verify your internet connection or Access Key.");
+            })
+            .then(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        });
+
+        // FIXED USER GEOLOCATION ROUTING FOR GOOGLE MAPS
+        document.getElementById('get-directions').onclick = function() {
+            const destLat = 26.877078;
+            const destLon = 75.875615;
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const userLat = position.coords.latitude;
+                    const userLon = position.coords.longitude;
+                    const url = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLon}&destination=${destLat},${destLon}&travelmode=driving`;
+                    window.open(url, '_blank');
+                }, function() {
+                    const url = `https://www.google.com/maps/search/?api=1&query=${destLat},${destLon}`;
+                    window.open(url, '_blank');
+                });
+            } else {
+                const url = `https://www.google.com/maps/search/?api=1&query=${destLat},${destLon}`;
+                window.open(url, '_blank');
+            }
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIJOY & SONA JEWELERS - Exclusive Client Registry</title>
+    
+    <style>
+        /* Base Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: radial-gradient(circle at center, #0a1424 0%, #02060d 100%);
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Typography */
+        .luxury-font {
+            font-family: 'Cinzel', 'Times New Roman', Times, serif;
+            letter-spacing: 0.15em;
+        }
+        
+        /* Shimmer Gold Effect */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f4da8b 0%, #e8e27c 50%, #edbe31 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Layout Framework Utility Replacements */
+        .text-center { text-align: center; }
+        .w-full { width: 100%; }
+        .hidden { display: none !important; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        
+        /* Main Interactive Container Frame */
+        .max-w-lg {
+            width: 100%;
+            max-width: 32rem;
+        }
+        .royal-card {
+            background: linear-gradient(145deg, rgba(13, 22, 38, 0.95) 0%, rgba(4, 8, 15, 0.98) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            z-index: 10;
+        }
+        .royal-card::before {
+            content: '';
+            position: absolute;
+            inset: -1.5px;
+            border-radius: 1rem;
+            background: linear-gradient(90deg, #c5c745, #fef249, #c2af47, #f8ed1e, #cfb625);
+            background-size: 300% auto;
+            z-index: -1;
+            animation: goldFlow 6s linear infinite;
+        }
+        @keyframes goldFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Form Components styling */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 480px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .royal-card { padding: 1.25rem; }
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .luxury-label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #94a3b8;
+            margin-bottom: 0.375rem;
+        }
+        .luxury-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            color: white;
+        }
+        .luxury-input:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+            outline: none;
+        }
+        
+        /* Buttons styling */
+        .btn-gold {
+            width: 100%;
+            margin-top: 1rem;
+            background: linear-gradient(90deg, #b45309, #fbbf24, #b45309);
+            color: black;
+            font-weight: 700;
+            padding: 0.875rem;
+            border-radius: 0.5rem;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-gold:hover { filter: brightness(1.1); }
+        .btn-gold:active { transform: scale(0.99); }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            background: transparent;
+            font-weight: 500;
+            padding: 0.875rem;
+            border-radius: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 11px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-outline:hover { background: rgba(245, 158, 11, 0.1); }
+
+        /* OTP Input Blocks styling */
+        .otp-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        .otp-box {
+            width: 3rem;
+            height: 3.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #fbbf24;
+        }
+        .otp-box:focus {
+            border-color: #fbbf24;
+            outline: none;
+        }
+
+        /* Custom Icon Status Rings */
+        .status-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .status-circle.amber {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+        }
+        .status-circle.rose {
+            background: rgba(244, 63, 94, 0.1);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: #fb7185;
+        }
+        .status-circle.emerald {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+        }
+
+        /* Additional Custom Text Color helpers */
+        .text-gray { color: #94a3b8; font-size: 12px; margin-top: 0.25rem; font-weight: 300; }
+        .text-amber { color: #fbbf24; }
+        .text-rose { color: #fb7185 !important; }
+        
+        /* Dashboard Mini Grid Components */
+        .info-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: left;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .mini-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+        .mini-cell {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Background Watermark */
+        .watermark {
+            position: absolute;
+            opacity: 0.03;
+            pointer-events: none;
+            text-align: center;
+            user-select: none;
+            font-size: 8vw;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            color: #f59e0b;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Dynamic Popup Notification Overlays */
+        .fixed-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 1rem;
+        }
+        .modal-body {
+            background-color: #0f172a;
+            border: 2px solid #fbbf24;
+            border-radius: 0.75rem;
+            padding: 1.75rem;
+            width: 100%;
+            max-width: 26rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+        .bounce { animation: bounce 1s infinite; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-15%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark luxury-font">BIJOY & SONA</div>
+
+    <div class="text-center" style="margin-bottom: 2rem; z-index: 10; width: 100%; padding: 0 1rem;">
+        <p style="font-size: 10px; letter-spacing: 0.4em; color: rgba(251, 191, 36, 0.7); font-weight: 600; text-transform: uppercase; margin-bottom: 0.25rem;">Welcome To Royalty</p>
+        <h1 class="luxury-font gold-gradient-text" style="font-size: calc(1.5rem + 2vw); font-weight: 700; line-height: 1.2;">BIJOY & SONA</h1>
+        <p class="luxury-font" style="font-size: 11px; letter-spacing: 0.3em; color: #94a3b8; margin-top: 0.25rem;">JEWELERS &bull; JAIPUR</p>
+        <div style="height: 1px; width: 6rem; background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent); margin: 1rem auto 0 auto;"></div>
+    </div>
+
+    <div class="max-w-lg royal-card">
+        
+        <!-- SECTOR 1: REGISTRATION COMPONENT -->
+        <div id="registrationSector" class="space-y-6">
+            <div class="text-center">
+                <h2 class="luxury-font text-amber" style="font-size: 1.1rem; text-transform: uppercase; font-weight: 500;">Request Private Access</h2>
+                <p class="text-gray">Register to view exclusive heritage diamond & gold collections</p>
+            </div>
+
+            <form id="accountForm" class="space-y-4">
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label class="luxury-label">Full Name</label>
+                        <input type="text" id="uName" required placeholder="Ex: Maharaja Dev" class="luxury-input">
+                    </div>
+                    <div class="input-group">
+                        <label class="luxury-label">Phone Number</label>
+                        <input type="tel" id="uPhone" required pattern="[0-9]{10}" placeholder="9876543210" class="luxury-input">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="luxury-label">Email Address</label>
+                    <input type="email" id="uEmail" required placeholder="username@domain.com" class="luxury-input">
+                </div>
+
+                <div class="input-group">
+                    <label class="luxury-label">Collection Interest</label>
+                    <select id="uInterest" class="luxury-input" style="background-color: #020617;">
+                        <option value="Heritage Polki & Kundan">Heritage Polki & Kundan</option>
+                        <option value="Bespoke Solitaires & Diamonds">Bespoke Solitaires & Diamonds</option>
+                        <option value="Bridal Trousseau Curation">Bridal Trousseau Curation</option>
+                        <option value="Fine Gold Artifacts">Fine Gold Artifacts</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-gold">Submit Request</button>
+            </form>
+        </div>
+
+        <!-- SECTOR 2: IDENTITY OTP PASSKEY VERIFICATION -->
+        <div id="otpSector" class="hidden space-y-6">
+            <div class="text-center space-y-2">
+                <div id="otpIcon" class="status-circle amber">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </div>
+                <h2 class="luxury-font text-amber" style="font-size: 1.1rem; text-transform: uppercase; font-weight: 500; margin-top: 0.5rem;">Identity Verification</h2>
+                <p id="otpMessage" class="text-gray" style="max-width: 20rem; margin: 0.25rem auto 0 auto; line-height: 1.5;">A secure passkey has been generated for your session. Please fulfill the verification input below.</p>
+            </div>
+
+            <form id="otpForm" class="space-y-6">
+                <div class="otp-container">
+                    <input type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" required class="otp-box">
+                    <input type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" required class="otp-box">
+                    <input type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" required class="otp-box">
+                    <input type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" required class="otp-box">
+                </div>
+
+                <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                    <span class="luxury-label" style="margin-bottom: 0.25rem; display: block; color: rgba(251, 191, 36, 0.8);">Demo Session Authorization Passcode:</span>
+                    <span id="automaticOtpDisplay" style="font-size: 1.5rem; font-weight: 700; letter-spacing: 0.2em; color: white; font-family: monospace;">0000</span>
+                </div>
+
+                <button type="submit" class="btn-gold">Verify Secure Passcode</button>
+            </form>
+        </div>
+
+        <!-- SECTOR 3: CONCIERGE ACCESS GRANTED SUMMARY -->
+        <div id="websiteDashboard" class="hidden space-y-6 text-center">
+            <div class="status-circle emerald">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"></path><path d="M3 20h18"></path></svg>
+            </div>
+            <div>
+                <h3 class="luxury-font text-amber" style="font-size: 1.5rem; font-weight: 700;">Concierge Access Granted</h3>
+                <p class="luxury-label" style="margin-top: 0.25rem; color: #94a3b8;">Premium Lounge Activated</p>
+            </div>
+            
+            <div class="info-panel">
+                <div class="panel-header text-amber">
+                    <span>Atelier Status</span>
+                    <span style="font-weight: 700; color: #34d399;">OPEN</span>
+                </div>
+                <p style="color: #cbd5e1;">Welcome. Your private consultation framework is ready. Our collection specialists in **Jaipur, Rajasthan** have been apprised of your interests.</p>
+                
+                <div class="mini-grid">
+                    <div class="mini-cell">
+                        <span class="luxury-label" style="font-size: 8px;">Service Mode</span>
+                        <span style="font-size: 12px; color: white; display: block; font-weight: 500;">By Appointment</span>
+                    </div>
+                    <div class="mini-cell">
+                        <span class="luxury-label" style="font-size: 8px;">Current Region</span>
+                        <span class="text-amber" style="font-size: 12px; display: block; font-weight: 500;">Jaipur Atelier</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="MM.html" class="btn-outline">
+                Proceed to Luxury Boutique &nbsp;&nbsp;
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ADMIN STRATEGIC REAL-TIME POPUP NOTIFICATION MODAL -->
+    <div id="adminLiveNotification" class="hidden fixed-modal">
+        <div class="modal-body">
+            <div class="bounce" style="color: #fbbf24; margin-bottom: 0.75rem;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </div>
+            <h3 class="luxury-font" style="font-size: 1.15rem; color: #fbbf24; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">Client Requesting OTP</h3>
+            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 1.25rem;">A client is requesting a verification token for showroom entry.</p>
+            
+            <div class="info-panel space-y-4" style="margin-bottom: 1.5rem; background: rgba(0,0,0,0.5);">
+                <p style="margin: 0.25rem 0;"><strong style="color: #fbbf24;">Client Name:</strong> <span id="notifName" style="color: white;"></span></p>
+                <p style="margin: 0.25rem 0;"><strong style="color: #fbbf24;">Phone Line:</strong> <span id="notifPhone" style="color: white;"></span></p>
+                <p style="margin: 0.25rem 0;"><strong style="color: #fbbf24;">Email Registered:</strong> <span id="notifEmail" style="color: white;"></span></p>
+                <p style="margin: 0.25rem 0;"><strong style="color: #fbbf24;">Target Collection:</strong> <span id="notifInterest" style="color: #34d399;"></span></p>
+            </div>
+            
+            <button id="dismissNotifBtn" class="btn-gold" style="margin: 0; background: #fbbf24;">Authorize & View OTP Screen</button>
+        </div>
+    </div>
+
+    <script>
+        const accountForm = document.getElementById('accountForm');
+        const otpForm = document.getElementById('otpForm');
+        
+        const registrationSector = document.getElementById('registrationSector');
+        const otpSector = document.getElementById('otpSector');
+        const websiteDashboard = document.getElementById('websiteDashboard');
+
+        const otpIcon = document.getElementById('otpIcon');
+        const otpMessage = document.getElementById('otpMessage');
+        const automaticOtpDisplay = document.getElementById('automaticOtpDisplay');
+
+        // Notification Elements Links
+        const adminLiveNotification = document.getElementById('adminLiveNotification');
+        const dismissNotifBtn = document.getElementById('dismissNotifBtn');
+        const notifName = document.getElementById('notifName');
+        const notifPhone = document.getElementById('notifPhone');
+        const notifEmail = document.getElementById('notifEmail');
+        const notifInterest = document.getElementById('notifInterest');
+
+        let autoGeneratedOtp = ""; 
+
+        function generateSecurePasscode() {
+            return Math.floor(1000 + Math.random() * 9000).toString();
+        }
+
+        // 1. Account Creation Trigger Action
+        accountForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Extract values to sync with data stream notification system
+            const nameValue = document.getElementById('uName').value;
+            const phoneValue = document.getElementById('uPhone').value;
+            const emailValue = document.getElementById('uEmail').value;
+            const interestValue = document.getElementById('uInterest').value;
+
+            autoGeneratedOtp = generateSecurePasscode();
+            automaticOtpDisplay.innerText = autoGeneratedOtp;
+
+            // Update parameters instantly inside notification display box
+            notifName.innerText = nameValue;
+            notifPhone.innerText = phoneValue;
+            notifEmail.innerText = emailValue;
+            notifInterest.innerText = interestValue;
+
+            // Open the critical notification event overlay immediately
+            adminLiveNotification.classList.remove('hidden');
+        });
+
+        // 2. Clear Notification and Transfer cleanly to the verification section
+        dismissNotifBtn.addEventListener('click', () => {
+            adminLiveNotification.classList.add('hidden');
+            
+            // Shift interface panels smoothly
+            registrationSector.classList.add('hidden');
+            otpSector.classList.remove('hidden');
+            
+            // Auto focus first item on load
+            setTimeout(() => otpBoxes[0].focus(), 100);
+        });
+
+        // Smart Form Navigation Logic Rules for Mobile Touch Keyboards
+        const otpBoxes = document.querySelectorAll('.otp-box');
+        otpBoxes.forEach((box, idx) => {
+            box.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && idx < otpBoxes.length - 1) {
+                    otpBoxes[idx + 1].focus();
+                }
+            });
+            box.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && idx > 0 && !e.target.value) {
+                    otpBoxes[idx - 1].focus();
+                }
+            });
+        });
+
+        // 3. Client Verification Evaluation Input Event
+        otpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let clientAssembledOtp = "";
+            otpBoxes.forEach(box => clientAssembledOtp += box.value);
+
+            if (clientAssembledOtp === autoGeneratedOtp) {
+                otpSector.classList.add('hidden');
+                websiteDashboard.classList.remove('hidden');
+            } else {
+                autoGeneratedOtp = generateSecurePasscode();
+                automaticOtpDisplay.innerText = autoGeneratedOtp;
+
+                // Visual Error State Handling UI Response Update Using Clean Inline SVGs
+                otpIcon.className = "status-circle rose";
+                otpIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>';
+                
+                otpMessage.innerText = "Incorrect validation passkey. A new security token has been re-issued above.";
+                otpMessage.className = "text-rose";
+                otpMessage.style.fontSize = "12px";
+
+                otpBoxes.forEach(box => box.value = "");
+                otpBoxes[0].focus();
+
+                setTimeout(() => {
+                    if(!otpSector.classList.contains('hidden')) {
+                        otpIcon.className = "status-circle amber";
+                        otpIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+                        otpMessage.innerText = "Please verify your active session token below to confirm identity.";
+                        otpMessage.className = "text-gray";
+                    }
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+</html>
